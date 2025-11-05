@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Store</title>
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+  <header class="wrap">
+    <h1>My Store</h1>
+    <nav>
+      <button id="cartBtn" class="btn">Cart <span id="cartCount">0</span></button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>Products</h2>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div id="drawer" class="drawer hidden">
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Your Cart</h3>
+        <button id="closeCart" class="icon">&times;</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="panel-foot">
+        <div class="total">Total: ₹ <span id="grandTotal">0.00</span></div>
+        <button id="checkout" class="btn primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script>
+    window.API_BASE = "http://127.0.0.1:8000"; // your admin/API server
+  </script>
+  <script src="./app.js"></script>
+</body>
+</html>

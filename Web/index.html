@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Catalog Manager</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Product Catalog Manager</h1>
+    <p class="subtitle">FastAPI + PostgreSQL • Simple Web UI</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="card-header">
+        <h2>Products</h2>
+        <button id="openFormBtn" class="btn primary">+ Add Product</button>
+      </div>
+
+      <div class="table-wrap">
+        <table id="productsTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>SKU</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Active</th>
+              <th style="width:160px;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsBody">
+            <!-- rows injected by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Drawer / Modal for Create/Edit -->
+  <div id="drawer" class="drawer hidden">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h3 id="formTitle">Add Product</h3>
+        <button id="closeFormBtn" class="icon-btn" aria-label="Close">&times;</button>
+      </div>
+
+      <form id="productForm">
+        <input type="hidden" id="productId" />
+
+        <label>
+          SKU
+          <input id="sku" type="text" maxlength="64" placeholder="e.g., IP16PM-256-TI" required />
+        </label>
+
+        <label>
+          Name
+          <input id="name" type="text" maxlength="255" placeholder="Product name" required />
+        </label>
+
+        <label>
+          Price
+          <input id="price" type="number" step="0.01" min="0" placeholder="0.00" required />
+        </label>
+
+        <label class="checkbox">
+          <input id="active" type="checkbox" checked />
+          <span>Active</span>
+        </label>
+
+        <div class="actions">
+          <button type="submit" class="btn primary" id="saveBtn">Save</button>
+          <button type="button" class="btn" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
