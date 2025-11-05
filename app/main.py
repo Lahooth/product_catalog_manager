@@ -11,7 +11,6 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Product Catalog & Order Manager (FastAPI)")
 
-# Keep CORS if you’re running the separate storefront on 8001
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://127.0.0.1:8001", "http://localhost:8001"],
@@ -20,7 +19,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve the lightweight admin web UI
 BASE_DIR = Path(__file__).resolve().parent.parent
 WEB_DIR = BASE_DIR / "web"
 app.mount("/web", StaticFiles(directory=str(WEB_DIR), html=True), name="web")
